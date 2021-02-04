@@ -86,3 +86,7 @@ header img {
 form{
     margin: 1rem;
 }
+
+form.btn-form{
+    margin: 0rem;
+}

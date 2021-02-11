@@ -2,11 +2,11 @@
 
 <main>
     <div class="flex-container">
-        <form action="" method="get" class="box">
+        <form action="" method="post" class="box">
             <input name="name" type="text" placeholder="Name" class="form-control"><br>
             <input name="email" type="email" placeholder="Email" class="form-control"><br>
             <textarea name="message" cols="40" rows="5" placeholder="Message" class="form-control"></textarea><br>
-            <input type="button" value="Send" class="btn btn-light" style="float: right;">
+            <button type="submit" name="submit" class="btn btn-light" style="float: right;">Send</button>
         </form>
         <div class="box">
             <h3>Got questions? Contact us!</h3>
@@ -15,6 +15,21 @@
         </div>
     </div>
 
+<?php
+
+    //xxs escaping
+    if (isset($_POST['submit'])) {
+        $name = $_POST['name'];
+        $email = $_POST['email'];
+        $message = $_POST['message'];
+
+        $name = htmlspecialchars($name, ENT_QUOTES, 'UTF-8');
+        $email = htmlspecialchars($email, ENT_QUOTES, 'UTF-8');
+        $message = htmlspecialchars($message, ENT_QUOTES, 'UTF-8');
+
+    }
+
+?>
 
 </main>
 

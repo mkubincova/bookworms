@@ -4,6 +4,7 @@ include "config.php";
 include "connect.php";
 
 $bookCopyId = $_POST['id'];
+$bookCopyId = htmlspecialchars($bookCopyId, ENT_QUOTES, 'UTF-8');
 
 $query = "UPDATE bookLibrary
         SET isReserved = 1 

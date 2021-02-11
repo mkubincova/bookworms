@@ -90,3 +90,7 @@ form{
 form.btn-form{
     margin: 0rem;
 }
+
+.item {
+    padding-bottom: 30px;
+}

@@ -3,13 +3,13 @@
 <main>
     <form action="" method="get" class="row g-3">
         <div class="col-auto">
-            <input type="text" placeholder="Author..." class="form-control">
+            <input type="text" name="author" placeholder="Author..." class="form-control">
         </div>
         <div class="col-auto">
-            <input type="text" placeholder="Book title..." class="form-control">
+            <input type="text" name="title" placeholder="Book title..." class="form-control">
         </div>
         <div class="col-auto">
-            <input type="button" value="Search" class="btn btn-light">
+            <input type="button" name="submit" value="Search" class="btn btn-light">
         </div>
     </form>
 
@@ -25,6 +25,15 @@
 
     //print table
     include "partials/booktable.php";
+
+    //xxs escaping
+    if (isset($_POST['submit'])) {
+        $author = $_POST['author'];
+        $title = $_POST['title'];
+
+        $author = htmlspecialchars($author, ENT_QUOTES, 'UTF-8');
+        $title = htmlspecialchars($title, ENT_QUOTES, 'UTF-8');
+    }
 
     ?>
     

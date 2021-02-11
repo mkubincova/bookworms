@@ -36,5 +36,6 @@
                 </td>
             </tr>
         <?php } ?>
+        <?php $stmt->close() ?>
     </tbody>
 </table>

@@ -1,6 +1,6 @@
-<?php 
+<?php
 include "partials/config.php";
-include "partials/connect.php";  
+include "partials/connect.php";
 ?>
 
 <!DOCTYPE html>
@@ -28,6 +28,15 @@ include "partials/connect.php";
                         <a class="nav-link <?php echo ($currentPage == "browse.php") ?  "active" : " " ?>" href="browse.php">Browse books</a>
                         <a class="nav-link <?php echo ($currentPage == "mybooks.php") ?  "active" : " " ?>" href="mybooks.php">My books</a>
                         <a class="nav-link <?php echo ($currentPage == "contact.php") ?  "active" : " " ?>" href="contact.php">Contact us</a>
+                        <a class="nav-link <?php echo ($currentPage == "gallery.php") ?  "active" : " " ?>" href="gallery.php">Gallery</a>
+                        <?php if ($_SESSION) { ?>
+                            <?php if ($_SESSION["userType"] == "admin") { ?>
+                                <a class="nav-link <?php echo ($currentPage == "admin.php") ?  "active" : " " ?>" href="admin.php">Admin</a>
+                            <?php } ?>
+                            <a class="nav-link <?php echo ($currentPage == "logout.php") ?  "active" : " " ?>" href="partials/logout.php">Logout</a>
+                        <?php } else { ?>
+                            <a class="nav-link <?php echo ($currentPage == "login.php") ?  "active" : " " ?>" href="login.php">Login</a>
+                        <?php } ?>
                     </div>
                 </div>
             </div>

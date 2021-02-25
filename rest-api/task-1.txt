@@ -1,0 +1,6 @@
+REST API real-life examples:
+
+An example of API is a weather forecast. There are plenty of weather apps and webiste that disply the weather for specific locations, such as news sites. It is unrealistic that every client would have their own meteorology equipment just to deliver this information, so instead there are websites that provide this information, such as https://openweathermap.org/api. Openweathermap collects and organized the weather data and makes it available for other clients throught their API. 
+
+Aside from retrievign data, APIs can also be used to manipulate it. An example of this are social media sites. Facebook has a server with a database of all posts, likes, accounts etc. which is then used by multiple clients like Facebook website, their android or ios app, messenger and all their other services. The data they store can be manupulated throught these interfaces, or our own by sending requests to Facebook API together with users access token (FacebookGraphAPI). 
+

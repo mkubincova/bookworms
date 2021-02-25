@@ -37,6 +37,7 @@ include "partials/connect.php";
                         <?php } else { ?>
                             <a class="nav-link <?php echo ($currentPage == "login.php") ?  "active" : " " ?>" href="login.php">Login</a>
                         <?php } ?>
+                        <a class="nav-link <?php echo ($currentPage == "cats.php") ?  "active" : " " ?>" href="cats.php">Cats</a>
                     </div>
                 </div>
             </div>

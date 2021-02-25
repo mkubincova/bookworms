@@ -1,0 +1,131 @@
+swagger: "2.0"
+info:
+  description: "Basic API example"
+  version: "1.0.0"
+  title: "Library"
+host: "library.com"
+basePath: "/api"
+tags:
+- name: "book"
+  description: "Everything about books"
+schemes:
+- "https"
+- "http"
+paths:
+  /books:
+    post:
+      tags:
+      - "book"
+      summary: "Add a new book to library"
+      operationId: "addBook"
+      consumes:
+      - "application/json"
+      produces:
+      - "application/json"
+      parameters:
+      - in: "body"
+        name: "body"
+        description: "Book object that needs to be added to the library"
+        required: true
+        schema:
+          $ref: "#/definitions/Book"
+      responses:
+        "201":
+          description: "Record created"
+        "405":
+          description: "Invalid input"
+    get:
+      tags:
+      - "book"
+      summary: "Find books based on their status"
+      description: "Find all available or reserved books"
+      operationId: "findBooksByStatus"
+      produces:
+      - "application/json"
+      parameters:
+      - name: "status"
+        in: "query"
+        description: "available or reserved"
+        type: "string"
+      responses:
+        "200":
+          description: "ok"
+          schema:
+            type: "array"
+            items:
+              $ref: "#/definitions/Book"
+        "400":
+          description: "Invalid tag value"
+  /books/{bookId}:
+    put:
+      tags:
+      - "book"
+      summary: "Update an existing book"
+      operationId: "updateBook"
+      consumes:
+      - "application/json"
+      produces:
+      - "application/json"
+      parameters:
+      - in: "path"
+        name: "bookId"
+        description: "ID of the book that should be"
+        required: true
+        type: "integer"
+        format: "int64"
+      - in: "body"
+        name: "body"
+        description: "Book object that needs to be updated"
+        required: true
+        schema:
+          $ref: "#/definitions/Book"
+      responses:
+        "204":
+          description: "Successfully updated"
+        "404":
+          description: "Book not found"
+    delete:
+      tags:
+      - "book"
+      summary: "Delete book from the library"
+      description: "This can only be done by the admin."
+      operationId: "deleteBook"
+      produces:
+      - "application/json"
+      parameters:
+      - name: "bookId"
+        in: "path"
+        description: "ID of the book that should be deleted"
+        required: true
+        type: "integer"
+        format: "int64"
+      responses:
+        "204":
+          description: "Book was deleted"
+        "404":
+          description: "Book not found"
+definitions:
+  Book:
+    type: "object"
+    required:
+    - "name"
+    - "author"
+    properties:
+      bookId:
+        type: "integer"
+        format: "int64"
+      name:
+        type: "string"
+        example: "Little Prince"
+      author:
+        type: "string"
+        example: "John Doe"
+      isbn:
+        type: "string"
+        example: "0-471-19047-0"  
+      status:
+        type: "string"
+        description: "Book status in the library"
+        enum:
+        - "available"
+        - "reserved"
